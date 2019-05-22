@@ -1,10 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Main from './containers/Main';
 import * as serviceWorker from './serviceWorker';
+import photosReducer from './reducers/photos_reducer';
+import { createStore, compose } from 'redux';
+import { Provider } from 'react-redux';
+import photosData from './data/photos_data';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+const store = createStore(photosReducer, photosData, composeEnhancers());
+
+ReactDOM.render(
+  <Provider store={ store }>
+    <Main />
+  </Provider>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
