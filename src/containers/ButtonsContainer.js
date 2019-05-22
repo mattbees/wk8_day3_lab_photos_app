@@ -3,26 +3,24 @@ import ButtonsList from '../components/ButtonsList';
 
 
 const mapStateToProps = (state) => {
-  // filter for unique cats
-  // return an array of cats
-  const categories = [ ...state ];
-  // categories.filter((element, index) => {
-  //   return element.indexOf(element.category) === index
-  // });
+  const categories = state.photos.map(banana => {
+    return banana.category;
+  })
+  const filteredCats = Array.from(new Set(categories));
   return {
-    categories: categories
+    categories: filteredCats
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     likeButton: (photoId) => {
-//       dispatch({
-//         type: 'LIKE_PHOTO',
-//         photoId
-//       })
-//     }
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    filterCategory: (category) => {
+      dispatch({
+        type: 'FILTER_CATEGORY',
+        category
+      })
+    }
+  };
+};
 
-export default connect(mapStateToProps)(ButtonsList);
+export default connect(mapStateToProps, mapDispatchToProps)(ButtonsList);

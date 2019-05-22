@@ -1,5 +1,5 @@
 import React from 'react';
-// import './Animal.css';
+import './Favourite.css';
 
 const Favourite = (props) => {
 

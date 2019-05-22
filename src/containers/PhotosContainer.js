@@ -2,8 +2,10 @@ import { connect } from 'react-redux';
 import PhotosList from '../components/PhotosList';
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    photos: state
+    photos: state.photos,
+    category: state.category
   };
 };
 

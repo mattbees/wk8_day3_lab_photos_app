@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-// import './ButtonsList.css';
+import './ButtonsList.css';
 
 const ButtonsList = (props) => {
   const buttonItems = props.categories.map((category, index) => {

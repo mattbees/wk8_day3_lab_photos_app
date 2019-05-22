@@ -1,9 +1,23 @@
 import React from 'react';
 import Favourite from './Favourite';
-// import './FavouritesList.css';
+import './FavouritesList.css';
 
 const FavouritesList = (props) => {
-  const listItems = props.filteredPhotos.map((photoData, index) => {
+
+  const checkPhotos = () => {
+    if (props.category === null) {
+      return props.filteredPhotos
+    } else {
+      return props.filteredPhotos.filter(photo => {
+        return photo.category === props.category;
+      })
+    }
+  };
+
+  const photos = checkPhotos()
+
+
+  const listItems = photos.map((photoData, index) => {
     return <Favourite
       photoData={ photoData }
       key={photoData.id}

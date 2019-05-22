@@ -10,7 +10,13 @@ import photosData from './data/photos_data';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-const store = createStore(photosReducer, photosData, composeEnhancers());
+const thisState = {
+  photos: photosData,
+  category: null
+}
+
+
+const store = createStore(photosReducer, thisState, composeEnhancers());
 
 ReactDOM.render(
   <Provider store={ store }>
